@@ -40,7 +40,7 @@ def join_cals(cals):
     n = len(cals[0])
     combined_lines = []
     for i in range(n):
-        combined_lines.append(" ".join([cal[i] for cal in cals]))
+        combined_lines.append(" | ".join([cal[i] for cal in cals]))
 
     cals = "\n".join(combined_lines)
     return cals
