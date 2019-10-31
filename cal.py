@@ -57,20 +57,21 @@ if len(args) == 2 and args[1] == '-3':
     cal1 = pad_cal(cal1)
     cal1 = get_highlighted_month(cal1)
 
-    next_month = (month + 1) % 12
-    if next_month == 1:
-        cal2 = calendar.month(year + 1, next_month)
+    next_month = (month + 1) % 13
+    if next_month == 0:
+        cal2 = calendar.month(year + 1, 1)
     else:
         cal2 = calendar.month(year, next_month)
     cal2 = pad_cal(cal2)
 
-    previous_month = (month - 1) % 12
-    if previous_month == 12:
-        cal3 = calendar.month(year - 1, previous_month)
+    previous_month = (month - 1) % 13
+    if previous_month == 0:
+        cal3 = calendar.month(year - 1, 12)
     else:
         cal3 = calendar.month(year, previous_month)
+    cal3 = pad_cal(cal3)
 
-    cal = join_cals([cal2, cal1, cal3])
+    cal = join_cals([cal3, cal1, cal2])
 
 else:
     cal = calendar.month(year, month)
